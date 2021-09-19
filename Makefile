@@ -22,8 +22,9 @@ build:
 run:
 	cargo run
 
+# 日本語の関数名をテストで使用した場合に、警告が出てウザいのでオフにする。
 test:
-	cargo test
+	RUSTFLAGS=-Awarnings cargo test
 
 fmt:
 	cargo fmt

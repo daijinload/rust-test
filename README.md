@@ -7,6 +7,13 @@ rust言語のテスト
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 . "$HOME/.cargo/env"
+rustc --version
+```
+
+## rust update
+
+```bash
+rustup update
 ```
 
 ## rust build and run

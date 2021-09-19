@@ -15,7 +15,7 @@ speculate! {
         }
         describe "IntClosedRangeは整数閉区間の文字列表記を返す" {
             #[rstest]
-            #[should_panic(expected = "Divide result is zero")]
+            #[should_panic(expected = "わざとパニックする")]
             fn lower日本語でOK2() {
                 panic!("this is a terrible mistake!");
             }

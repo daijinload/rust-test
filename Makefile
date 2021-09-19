@@ -23,8 +23,9 @@ run:
 	cargo run
 
 # 日本語の関数名をテストで使用した場合に、警告が出てウザいのでオフにする。
+# nocaptureを付けるとprintlnが出力できる。
 test:
-	RUSTFLAGS=-Awarnings cargo test
+	RUSTFLAGS=-Awarnings cargo test -- --nocapture
 
 fmt:
 	cargo fmt

@@ -25,7 +25,7 @@ run:
 # 日本語の関数名をテストで使用した場合に、警告が出てウザいのでオフにする。
 # nocaptureを付けるとprintlnが出力できる。
 test:
-	RUST_BACKTRACE=1 RUSTFLAGS=-Awarnings cargo test --no-fail-fast -- --nocapture --test-threads=1
+	RUST_BACKTRACE=1 RUSTFLAGS=-Awarnings cargo test --no-fail-fast -- --nocapture --show-output --test-threads=1
 
 fmt:
 	cargo fmt

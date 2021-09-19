@@ -2,6 +2,14 @@
 
 all: aaa bbb
 
+brun: build run
+
+build:
+		cargo build
+
+run:
+		cargo run
+
 aaa:
 		@echo "Hello aaa"
 

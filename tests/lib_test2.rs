@@ -30,6 +30,15 @@ speculate! {
             //     result
             // }
         }
-        describe "IntClosedRangeは指定した整数を含むか判定できる" {}
+        describe "IntClosedRangeは指定した整数を含むか判定できる" {
+            #[rstest(input, expected,
+                case(1, 1),
+                case(2, 2)
+            )]
+            fn notationメソッドは整数閉区間の文字列表記を返す(input: u32, expected: u32) {
+                println!("input:{}のとき、expectedは{}である", input, expected);
+                assert_eq!(expected, input);
+            }
+        }
     }
 }

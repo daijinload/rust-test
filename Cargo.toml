@@ -3,3 +3,7 @@
 name = "rust_mymy"
 version = "0.0.1"
 authors = [ "daijinload@gmail.com" ]
+
+[dev-dependencies]
+speculate = "*"
+rstest = "*"

@@ -20,4 +20,4 @@ aaa:
 		@echo "Hello aaa"
 
 bbb:
-		@echo "Hello bbb"
+		echo "Hello bbb"

@@ -1,9 +1,9 @@
 extern crate rust_mymy;
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(rust_mymy::add_two(2), 4);
-    }
+mod common;
+
+#[test]
+fn it_works() {
+    common::setup();
+    assert_eq!(rust_mymy::add_two(2), 4);
 }

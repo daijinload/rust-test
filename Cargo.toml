@@ -1,5 +1,5 @@
 [package]
 
-name = "hello_world"
+name = "rust_my_test"
 version = "0.0.1"
 authors = [ "daijinload@gmail.com" ]

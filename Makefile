@@ -1,9 +1,12 @@
+# Usage:
+# make        # compile all binary
+# make echo   # echo test
 
-# 各種コマンドのMakefile
 # .PHONY: all aaa bbb
 
-all: aaa bbb
+all: brun
 brun: build run
+echo: aaa bbb
 
 install:
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh

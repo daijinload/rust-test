@@ -2,8 +2,8 @@ extern crate rstest;
 #[cfg(test)]
 extern crate speculate;
 
-use rstest::*;
 use speculate::speculate;
+use rstest::*;
 
 speculate! {
     describe "IntClosedRangeは整数閉区間を表す" {

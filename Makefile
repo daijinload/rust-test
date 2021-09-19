@@ -1,11 +1,18 @@
+
+# 各種コマンドのMakefile
+
 .PHONY: all aaa bbb
 
 all: aaa bbb
+brun: build run
+
+install:
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+		. "$HOME/.cargo/env"
+		rustc --version
 
 upgrade:
 		rustup update
-
-brun: build run
 
 build: 
 		cargo build

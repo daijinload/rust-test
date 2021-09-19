@@ -2,13 +2,19 @@
 
 all: aaa bbb
 
+upgrade:
+		rustup update
+
 brun: build run
 
-build:
+build: 
 		cargo build
 
 run:
 		cargo run
+
+test:
+		cargo test
 
 aaa:
 		@echo "Hello aaa"

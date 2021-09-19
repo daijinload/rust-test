@@ -1,5 +1,5 @@
 [package]
-
+edition = "2018"
 name = "rust_mymy"
 version = "0.0.1"
 authors = [ "daijinload@gmail.com" ]

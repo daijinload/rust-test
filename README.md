@@ -2,7 +2,26 @@
 
 rust言語のテスト
 
-下記は、コミットする時の先頭修飾子
+## rust setup
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
+```
+
+## rust build and run
+
+```bash
+cargo build && cargo run
+```
+
+## rust test
+
+```bash
+cargo test
+```
+
+## コミットする時の先頭修飾子
 
 ```
 feat: 機能追加・修正

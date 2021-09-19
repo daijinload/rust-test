@@ -13,7 +13,13 @@ speculate! {
                 assert_eq!(3, 3);
             }
         }
-        describe "IntClosedRangeは整数閉区間の文字列表記を返す" {}
+        describe "IntClosedRangeは整数閉区間の文字列表記を返す" {
+            #[rstest]
+            #[should_panic(expected = "Divide result is zero")]
+            fn lower日本語でOK2() {
+                panic!("this is a terrible mistake!");
+            }
+        }
         describe "IntClosedRangeは指定した整数を含むか判定できる" {}
     }
 }

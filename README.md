@@ -33,7 +33,7 @@ cargo test
 ```
 feat: 機能追加・修正
 fix: バグフィックス
-docs: ドキュメント修正
+doc: ドキュメント修正
 style: コード整形
 refactor: リファクタリング
 test: テストコード追加・修正

@@ -19,6 +19,16 @@ speculate! {
             fn lower日本語でOK2() {
                 panic!("this is a terrible mistake!");
             }
+            // panicをキャッチしたい場合は、下記のメソッドを使うと良いらしいが。。。
+            // https://try2explore.com/questions/jp/10187010
+            // use std::panic;
+            // fn catch_unwind_silent<F: FnOnce() -> R + panic::UnwindSafe, R>(f: F) -> std::thread::Result<R> {
+            //     let prev_hook = panic::take_hook();
+            //     panic::set_hook(Box::new(|_| {}));
+            //     let result = panic::catch_unwind(f);
+            //     panic::set_hook(prev_hook);
+            //     result
+            // }
         }
         describe "IntClosedRangeは指定した整数を含むか判定できる" {}
     }

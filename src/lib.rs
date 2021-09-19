@@ -7,6 +7,7 @@ fn internal_adder(a: i32, b: i32) -> i32 {
 }
 
 // internalなテストを書く場合は、テスト対象のファイルに直書きするスタイル
+// 本番ビルド時などにテストコードが含まれないように、cfg(test)の記述をする
 #[cfg(test)]
 mod tests {
     use super::*;

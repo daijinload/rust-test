@@ -25,6 +25,12 @@ run:
 test:
 	cargo test
 
+fmt:
+	cargo fmt
+
+fmt-check:
+	cargo fmt --all -- --check
+
 aaa:
 	@echo "Hello aaa"
 

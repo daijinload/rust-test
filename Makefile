@@ -7,24 +7,24 @@ all: aaa bbb
 brun: build run
 
 install:
-		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-		. "$HOME/.cargo/env"
-		rustc --version
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	. "$HOME/.cargo/env"
+	rustc --version
 
 upgrade:
-		rustup update
+	rustup update
 
 build: 
-		cargo build
+	cargo build
 
 run:
-		cargo run
+	cargo run
 
 test:
-		cargo test
+	cargo test
 
 aaa:
-		@echo "Hello aaa"
+	@echo "Hello aaa"
 
 bbb:
-		echo "Hello bbb"
+	echo "Hello bbb"

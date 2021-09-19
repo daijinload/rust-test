@@ -1,7 +1,6 @@
 
 # 各種コマンドのMakefile
-
-.PHONY: all aaa bbb
+# .PHONY: all aaa bbb
 
 all: aaa bbb
 brun: build run

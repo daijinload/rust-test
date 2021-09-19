@@ -6,12 +6,13 @@ fn internal_adder(a: i32, b: i32) -> i32 {
     a + b
 }
 
+// internalなテストを書く場合は、テスト対象のファイルに直書きするスタイル
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     fn internal() {
-        assert_eq!(4, internal_adder(2, 2));
+        assert_eq!(6, internal_adder(3, 3));
     }
 }

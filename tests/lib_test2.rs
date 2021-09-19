@@ -14,11 +14,11 @@ speculate! {
             }
         }
         describe "IntClosedRangeは整数閉区間の文字列表記を返す" {
-            #[rstest]
-            #[should_panic(expected = "わざとパニックする")]
-            fn lower日本語でOK2() {
-                panic!("this is a terrible mistake!");
-            }
+            // #[rstest]
+            // #[should_panic(expected = "わざとパニックする")]
+            // fn lower日本語でOK2() {
+            //     panic!("this is a terrible mistake!");
+            // }
             // panicをキャッチしたい場合は、下記のメソッドを使うと良いらしいが。。。
             // https://try2explore.com/questions/jp/10187010
             // use std::panic;

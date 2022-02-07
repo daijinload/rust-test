@@ -37,8 +37,8 @@ wasmtime /home/ahashi/src/git/rust-test/simple-add/target/wasm32-wasi/release/si
 wasmtime /home/ahashi/src/git/rust-test/simple-add/target/wasm32-wasi/release/simple_add.wasm --invoke hello
 > Hello, world!
 
-# wasmerだと下記だが、2021-02-07現在、wasm32-wasiでビルドしてもエラーが出てしまい動かない。
-# wasm32-unknown-unknownなら動くが、wasiでは無くなるため、標準出力などは出来なくなる。。。
+# wasmerだと下記だが、2021-02-07現在、wasm32-wasiでビルドしたものだとエラーが出てしまい動かない。
+# wasm32-unknown-unknownなら動くが、wasiでは無くなるため、標準出力などは動かなくなる。。。
 wasmer test.wasm -i add_one 1
 > 2
 wasmer test.wasm -i hello

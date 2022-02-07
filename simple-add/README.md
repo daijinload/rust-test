@@ -9,13 +9,15 @@ cargo install wasm-gc
 ```
 
 ```bash
+
+# 前準備＆ビルド（wasm32-unknown-unknownも色々と種類がある中での１つとなる。使う環境次第で使い分ける必要があるっぽい。）
 rustup target add wasm32-unknown-unknown
 cargo build --target wasm32-unknown-unknown --release
 
-# 先にサイズを見ておく
+# 出来上がったwasmのサイズを見る
 ls -lah target/wasm32-unknown-unknown/release/
 
-# ファイルがデバッグシンボルなどで重いので軽量化
+# ファイルサイズがデバッグシンボルなどで大きいので軽量化
 wasm-gc target/wasm32-unknown-unknown/release/simple_add.wasm
 
 # 驚きの軽量化

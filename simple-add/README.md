@@ -16,16 +16,14 @@ cargo build --target wasm32-unknown-unknown --release
 ls -lah target/wasm32-unknown-unknown/release/
 
 # ファイルがデバッグシンボルなどで重いので軽量化
-wasm-gc target/wasm32-unknown-unknown/release/hello.wasm
+wasm-gc target/wasm32-unknown-unknown/release/simple_add.wasm
 
 # 驚きの軽量化
 ls -lah target/wasm32-unknown-unknown/release/
 
 # wat化
-wasm2wat target/wasm32-unknown-unknown/release/hello.wasm -o hello.wat
+wasm2wat target/wasm32-unknown-unknown/release/simple_add.wasm -o simple_add.wat
 ```
-
-
 
 Rustが初見の方は、下記ドキュメントを見てから見ると、何がwasmコードで、何がRustコードか？わかると思います。
 

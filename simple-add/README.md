@@ -6,8 +6,10 @@
 # 事前準備として下記をインストールしておく
 cargo install wasm-gc
 
-# 下記はオプション。テキスト表現のwatに変換するのに必要。（Macとかはwabtのリポジトリを見てやるのがよい。）
+# 下記はオプション。テキスト表現のwatに変換するのに必要
 sudo apt install wabt
+# Mac?
+brew install wabt
 ```
 
 ```bash
@@ -32,16 +34,17 @@ wasm2wat target/wasm32-wasi/release/simple_add.wasm -o simple_add.wat
 wat2wasm simple_add.wat -o simple_add.wasm
 
 # スタンドアロン実行（by wasmtime）
-wasmtime /home/ahashi/src/git/rust-test/simple-add/target/wasm32-wasi/release/simple_add.wasm --invoke add_one 1
+wasmtime simple_add.wasm --invoke add_one 1
 > 2
-wasmtime /home/ahashi/src/git/rust-test/simple-add/target/wasm32-wasi/release/simple_add.wasm --invoke hello
+wasmtime simple_add.wasm --invoke hello
 > Hello, world!
 
-# wasmerだと下記だが、2021-02-07現在、wasm32-wasiでビルドしたものだとエラーが出てしまい動かない。
+# スタンドアロン実行（by wasmer）
+# 2021-02-07現在、wasm32-wasiでビルドしたものだとエラーが出てしまい動かない。
 # wasm32-unknown-unknownなら動くが、wasiでは無くなるため、標準出力などは動かなくなる。。。
-wasmer test.wasm -i add_one 1
+wasmer simple_add.wasm -i add_one 1
 > 2
-wasmer test.wasm -i hello
+wasmer simple_add.wasm -i hello
 >
 # > 出てこない!!
 
@@ -62,11 +65,14 @@ Rustが初見の方は、下記ドキュメントを見てから見ると、何�
 ### Rustの外部コードの呼び出しと外部コード作成の書き方
 https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 
-### 参考サイト
-https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
-
 ### wasmのwat化
 https://github.com/WebAssembly/wabt
 
 ### wasmのwat化（オンライン）
 https://webassembly.github.io/wabt/demo/wat2wasm/
+
+### WebAssembly テキスト形式の理解
+https://developer.mozilla.org/ja/docs/WebAssembly/Understanding_the_text_format
+
+### Brainfuckのwasmターゲットコンパイラを書いてwasmとWASIに入門
+https://zenn.dev/mshaka/articles/5e2e9a0e02c93bc3d38b

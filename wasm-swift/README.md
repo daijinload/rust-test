@@ -33,6 +33,15 @@ swift --version
 
 # wasm generate
 echo 'print("Hello, world!")' > hello.swift
-swiftc -target wasm32-unknown-wasi hello.swift -o hello-swift.wasm
 
+# 単体実行形式
+swiftc -target wasm32-unknown-wasi hello.swift -o hello-swift.wasm
+wasmtime hello-swift.wasm
+
+# 外部関数実行形式
+swiftc \
+    -target wasm32-unknown-wasi \
+    add.swift -o add-swift.wasm \
+    -Xlinker --export=add
+wasmtime add-swift.wasm --invoke add 2 13
 ```

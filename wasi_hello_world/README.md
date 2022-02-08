@@ -14,3 +14,6 @@ cargo build --target wasm32-wasi --release
 wasmtime target/wasm32-wasi/release/wasi_hello_world.wasm
 wasmer target/wasm32-wasi/release/wasi_hello_world.wasm
 ```
+
+## 参考記事
+https://wasmbyexample.dev/examples/wasi-hello-world/wasi-hello-world.rust.en-us.html

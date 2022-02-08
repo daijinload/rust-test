@@ -33,13 +33,13 @@ wasm2wat target/wasm32-wasi/release/simple_add.wasm -o simple_add.wat
 # wat to wasm（上記のプログラムだと、さらにファイルサイズが小さくなった）
 wat2wasm simple_add.wat -o simple_add.wasm
 
-# スタンドアロン実行（by wasmtime）
+# wasmスタンドアロン実行（by wasmtime）
 wasmtime simple_add.wasm --invoke add_one 1
 > 2
 wasmtime simple_add.wasm --invoke hello
 > Hello, world!
 
-# スタンドアロン実行（by wasmer）
+# wasmスタンドアロン実行（by wasmer）
 # 2021-02-07現在、wasm32-wasiでビルドしたものだとエラーが出てしまい動かない。
 # wasm32-unknown-unknownなら動くが、wasiでは無くなるため、標準出力などは動かなくなる。。。
 wasmer simple_add.wasm -i add_one 1

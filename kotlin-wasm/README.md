@@ -1,10 +1,10 @@
 # kotlin-wasm
 
-kotlinコードからwasmを生成してみる。
+kotlin コードから wasm を生成してみる。
 
-結論から言うがブラウザでの実行は出来るが、wasmtimeなどのランタイムではエラーが出てしまい実行できなかった。
+結論から言うがブラウザでの実行は出来るが、wasmtime などのランタイムではエラーが出てしまい実行できなかった。
 
-おそらく、wasmのwasiを使ったアウトプットには対応出来ていないっぽい。2022-02-09時点では使用不可との結論。
+おそらく、wasm の wasi を使ったアウトプットには対応出来ていないっぽい。2022-02-09 時点では使用不可との結論。
 
 ## kotlin-naitve setup
 
@@ -27,7 +27,7 @@ wasmtime hello-kotlin.wasm
 wasm2wat hello-kotlin.wasm -o hello-kotlin.wat
 ```
 
-## kotlinでnaitveコード生成（全然関係ないがせっかくなので書いとく）
+## kotlin で naitve コード生成（全然関係ないがせっかくなので書いとく）
 
 ```bash
 # 自分の環境を確認して指定する（linux mint OS で amd or intel の x86_x64 CPUの場合、linux_x64）
@@ -36,7 +36,7 @@ kotlinc-native hello.kt -target linux_x64 -o hello-kotlin
 ./hello-kotlin.kexe
 ```
 
-## kotlinのインストール（やらなくても良いはずだが手順を調べたので書いとく）
+## kotlin のインストール（やらなくても良いはずだが手順を調べたので書いとく）
 
 ```bash
 # linux mintの場合、snapが無いので下記でインストールする

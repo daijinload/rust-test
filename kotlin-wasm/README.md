@@ -1,28 +1,8 @@
-# swift-wasm
+# kotlin-wasm
 
-swiftコードからwasmを生成してみようかな。
-
-### ほぼ、本家ドキュメントのままです。
-https://book.swiftwasm.org/getting-started/setup.html
+kotlinコードからwasmを生成してみる。
 
 ```bash
-# swift setup
-sudo apt-get install \
-               binutils \
-               git \
-               gnupg2 \
-               libc6-dev \
-               libcurl4 \
-               libedit2 \
-               libgcc-9-dev \
-               libpython2.7 \
-               libsqlite3-0 \
-               libstdc++-9-dev \
-               libxml2 \
-               libz3-dev \
-               pkg-config \
-               tzdata \
-               zlib1g-dev
 
 mkdir ~/development
 cd ~/development
@@ -35,11 +15,29 @@ kotlinc-native -list-targets
 # 単体実行形式
 kotlinc-native hello.kt -target wasm32 -o hello-kotlin
 wasmtime hello-kotlin.wasm
+wasm2wat hello-kotlin.wasm -o hello-kotlin.wat
+```
 
-# 外部関数実行形式
-swiftc \
-    -target wasm32-unknown-wasi \
-    add.swift -o add-swift.wasm \
-    -Xlinker --export=add
-wasmtime add-swift.wasm --invoke add 2 13
+## kotlinでnaitveコード生成（全然関係ないがせっかくなので書いとく）
+
+```bash
+# 自分の環境を確認して指定する（linux mint OS で amd or intel の x86_x64 CPUの場合、linux_x64）
+kotlinc-native -list-targets
+kotlinc-native hello.kt -target linux_x64 -o hello-kotlin
+```
+
+## kotlinのインストール（やらなくても良いはずだが手順を調べたので書いとく）
+
+```bash
+# linux mintの場合、snapが無いので下記でインストールする
+# sudo rm /etc/apt/preferences.d/nosnap.pref
+# sudo apt update
+# sudo apt install snapd
+
+sudo apt install openjdk-11-jdk
+sudo snap install --classic kotlin
+
+// とりあえず通常ビルドが動くのか？確認
+kotlinc hello.kt -include-runtime -d hello.jar
+java -jar hello.jar
 ```

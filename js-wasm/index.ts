@@ -1,7 +1,7 @@
-import { Console } from "as-wasi";
+import { Console } from 'as-wasi'
 
-export function _start(): void {
-  Console.log("hello world!!");
+export function _start (): void {
+  Console.log('hello world!!')
 }
 
 // import { Console, Environ, CommandLine } from "as-wasi";

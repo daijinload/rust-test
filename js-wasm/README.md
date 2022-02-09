@@ -2,6 +2,9 @@
 
 JavaScript コードから wasm を生成してみる。
 
+■参考文献
+https://radu-matei.com/blog/nodejs-wasi/
+
 ## Node.js install by NVM
 
 ```bash
@@ -20,4 +23,6 @@ nvm use node
 ```bash
 npm install
 npm run-script asbuild
+# or
+./node_modules/.bin/asc index.ts -b hello.wasm --use abort=wasi_abort
 ```

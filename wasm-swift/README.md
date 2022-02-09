@@ -26,9 +26,9 @@ sudo apt-get install \
 
 mkdir ~/development
 cd ~/development
-curl -O https://github.com/swiftwasm/swift/releases/download/swift-wasm-5.4.0-RELEASE/swift-wasm-5.4.0-RELEASE-ubuntu20.04_x86_64.tar.gz
-tar -xf swift-wasm-5.4.0-RELEASE-ubuntu20.04_x86_64.tar.gz
-export PATH=~/development/swift-wasm-5.4.0-RELEASE/usr/bin:"${PATH}"
+curl -OL --max-redirs 1 https://github.com/swiftwasm/swift/releases/download/swift-wasm-5.5.0-RELEASE/swift-wasm-5.5.0-RELEASE-ubuntu20.04_x86_64.tar.gz
+tar -xf swift-wasm-5.5.0-RELEASE-ubuntu20.04_x86_64.tar.gz
+export PATH=~/development/swift-wasm-5.5.0-RELEASE/usr/bin:"${PATH}"
 swift --version
 
 # wasm generate

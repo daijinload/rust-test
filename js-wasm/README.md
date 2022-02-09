@@ -2,7 +2,7 @@
 
 JavaScript コードから wasm を生成してみる。
 
-■参考文献
+■ 参考文献
 https://radu-matei.com/blog/nodejs-wasi/
 
 ## Node.js install by NVM

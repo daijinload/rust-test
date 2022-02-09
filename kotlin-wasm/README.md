@@ -33,6 +33,7 @@ wasm2wat hello-kotlin.wasm -o hello-kotlin.wat
 # 自分の環境を確認して指定する（linux mint OS で amd or intel の x86_x64 CPUの場合、linux_x64）
 kotlinc-native -list-targets
 kotlinc-native hello.kt -target linux_x64 -o hello-kotlin
+./hello-kotlin.kexe
 ```
 
 ## kotlinのインストール（やらなくても良いはずだが手順を調べたので書いとく）

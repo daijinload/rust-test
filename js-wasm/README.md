@@ -22,7 +22,7 @@ nvm use node
 
 ```bash
 npm install
-npm run-script asbuild
+npm run asbuild
 # or
 ./node_modules/.bin/asc index.ts -b hello.wasm --use abort=wasi_abort
 ```

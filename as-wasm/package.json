@@ -1,0 +1,26 @@
+{
+  "name": "as-wasm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests",
+    "lint": "prettier --write \"**/*.{js,ts,yaml,json,md,gql}\" && ts-standard --fix",
+    "asbuild:debug": "asc assembly/index.ts -b hello-as-debug.wasm -t hello-as-debug.wat --use abort=wasi_abort --target debug",
+    "asbuild:release": "asc assembly/index.ts -b hello-as-release.wasm -t hello-as-release.wat --use abort=wasi_abort --target release",
+    "asbuild": "npm run asbuild:release"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@assemblyscript/loader": "^0.19.22",
+    "as-wasi": "0.4.6",
+    "assemblyscript": "^0.19.22"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "prettier": "2.5.1",
+    "rimraf": "3.0.2",
+    "ts-standard": "11.0.0"
+  }
+}

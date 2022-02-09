@@ -1,8 +1,9 @@
 # swift-wasm
 
-swiftコードからwasmを生成してみようかな。
+swift コードから wasm を生成してみようかな。
 
 ### ほぼ、本家ドキュメントのままです。
+
 https://book.swiftwasm.org/getting-started/setup.html
 
 ```bash

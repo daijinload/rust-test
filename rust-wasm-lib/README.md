@@ -1,6 +1,6 @@
 # pure rust wasm test
 
-本当にシンプルにrustからwasmを生成して、watも作って、ランタイムでwasm実行するまでをやるプロジェクトです。
+本当にシンプルに rust から wasm を生成して、wat も作って、ランタイムで wasm 実行するまでをやるプロジェクトです。
 
 ```bash
 # 事前準備として下記をインストールしておく
@@ -50,29 +50,34 @@ wasmer simple_add.wasm -i hello
 
 ```
 
-## Rustのビルドオプション
+## Rust のビルドオプション
 
-標準入出力など、OSの機能を使う場合は、wasiを使う必要がある。
+標準入出力など、OS の機能を使う場合は、wasi を使う必要がある。
 
-* wasm32-unknown-emscripten	✓	WebAssembly via Emscripten
-* wasm32-unknown-unknown	✓	WebAssembly
-* wasm32-wasi	✓	WebAssembly with WASI
+- wasm32-unknown-emscripten ✓ WebAssembly via Emscripten
+- wasm32-unknown-unknown ✓ WebAssembly
+- wasm32-wasi ✓ WebAssembly with WASI
 
 ## 参考資料
 
-Rustが初見の方は、下記ドキュメントを見てから見ると、何がwasmコードで、何がRustコードか？わかると思います。
+Rust が初見の方は、下記ドキュメントを見てから見ると、何が wasm コードで、何が Rust コードか？わかると思います。
 
-### Rustの外部コードの呼び出しと外部コード作成の書き方
+### Rust の外部コードの呼び出しと外部コード作成の書き方
+
 https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html#using-extern-functions-to-call-external-code
 
-### wasmのwat化
+### wasm の wat 化
+
 https://github.com/WebAssembly/wabt
 
-### wasmのwat化（オンライン）
+### wasm の wat 化（オンライン）
+
 https://webassembly.github.io/wabt/demo/wat2wasm/
 
 ### WebAssembly テキスト形式の理解
+
 https://developer.mozilla.org/ja/docs/WebAssembly/Understanding_the_text_format
 
-### Brainfuckのwasmターゲットコンパイラを書いてwasmとWASIに入門
+### Brainfuck の wasm ターゲットコンパイラを書いて wasm と WASI に入門
+
 https://zenn.dev/mshaka/articles/5e2e9a0e02c93bc3d38b

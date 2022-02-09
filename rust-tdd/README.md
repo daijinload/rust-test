@@ -1,6 +1,6 @@
 # rust-test
 
-rust言語のテスト
+rust 言語のテスト
 
 ## rust setup
 

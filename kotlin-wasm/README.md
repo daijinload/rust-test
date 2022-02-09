@@ -2,8 +2,9 @@
 
 kotlinコードからwasmを生成してみる。
 
-```bash
+## kotlin-naitve setup
 
+```bash
 mkdir ~/development
 cd ~/development
 curl -OL --max-redirs 1 https://github.com/JetBrains/kotlin/releases/download/v1.6.10/kotlin-native-linux-x86_64-1.6.10.tar.gz
@@ -11,7 +12,11 @@ tar -xf kotlin-native-linux-x86_64-1.6.10.tar.gz
 export PATH=~/development/kotlin-native-linux-x86_64-1.6.10/bin:"${PATH}"
 kotlinc-native -version
 kotlinc-native -list-targets
+```
 
+## kotlin-naitve wasm generate
+
+```bash
 # 単体実行形式
 kotlinc-native hello.kt -target wasm32 -o hello-kotlin
 wasmtime hello-kotlin.wasm

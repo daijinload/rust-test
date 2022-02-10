@@ -5,6 +5,16 @@ Dart言語のセットアップはflutterのセットアップを参考にして
 ■flutter setup
 https://docs.flutter.dev/get-started/install
 
+## 実行
+
+```bash
+dart pub get
+dart run wasm:setup
+wat2wasm square.wat -o square.wasm
+dart run
+```
+
+## setup したときのコマンド
 
 ```bash
 dart create dart-wasm
@@ -14,6 +24,7 @@ dart pub add wasm
 dart pub get
 dart run wasm:setup
 wat2wasm square.wat -o square.wasm
+dart run
 ```
 
 ## 参考記事

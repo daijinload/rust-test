@@ -1,9 +1,10 @@
-#[no_mangle]
-pub extern "C" fn add_one(x: i32) -> i32 {
-    x + 1
-}
+use pulldown_cmark::{html, Parser};
+use wasm_bindgen::prelude::*;
 
-#[no_mangle]
-pub extern "C" fn hello() {
-    println!("Hello, world!");
+#[wasm_bindgen]
+pub fn render(input: &str) -> String {
+    let parser = Parser::new(input);
+    let mut html_output = String::new();
+    html::push_html(&mut html_output, parser);
+    return html_output;
 }

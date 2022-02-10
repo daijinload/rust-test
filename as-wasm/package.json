@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node tests",
     "lint": "prettier --write \"**/*.{js,ts,yaml,json,md,gql}\" && ts-standard --fix",
-    "asbuild:debug": "asc assembly/index.ts -b hello-as-debug.wasm -t hello-as-debug.wat --use abort=wasi_abort --target debug",
+    "asbuild:debug": "asc assembly/index.ts -b hello-as-debug.wasm -t hello-as-debug.wat --use abort=wasi_abort --target debug --exportRuntime --transform as-bind",
     "asbuild:release": "asc assembly/index.ts -b hello-as-release.wasm -t hello-as-release.wat --use abort=wasi_abort --target release",
     "asbuild": "npm run asbuild:release"
   },
@@ -14,8 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "@assemblyscript/loader": "^0.19.22",
+    "as-bind": "^0.8.2",
     "as-wasi": "0.4.6",
-    "assemblyscript": "^0.19.22"
+    "assemblyscript": "^0.19.22",
+    "assemblyscript-json": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "*",

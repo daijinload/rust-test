@@ -13,6 +13,7 @@ dart run
 dart pub add wasm
 dart pub get
 dart run wasm:setup
+wat2wasm square.wat -o square.wasm
 ```
 
 ## 参考記事

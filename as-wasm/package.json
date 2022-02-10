@@ -7,7 +7,7 @@
     "test": "node tests",
     "lint": "prettier --write \"**/*.{js,ts,yaml,json,md,gql}\" && ts-standard --fix",
     "asbuild:debug": "asc assembly/index.ts -b hello-as-debug.wasm -t hello-as-debug.wat --use abort=wasi_abort --target debug --exportRuntime --transform as-bind",
-    "asbuild:release": "asc assembly/index.ts -b hello-as-release.wasm -t hello-as-release.wat --use abort=wasi_abort --target release",
+    "asbuild:release": "asc assembly/index.ts -b hello-as-release.wasm -t hello-as-release.wat --use abort=wasi_abort --enable reference-types --target release",
     "asbuild": "npm run asbuild:release"
   },
   "author": "",

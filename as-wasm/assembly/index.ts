@@ -1,5 +1,10 @@
 // The entry file of your WebAssembly module.
-import { Console } from "as-wasi";
+// import { Console } from "as-wasi";
+
+export function concat(a: string, b: string): string {
+  return a + b
+}
+
 
 // export function _start(): void {
 //   Console.log("hello world!!");
@@ -33,8 +38,12 @@ import { Console } from "as-wasi";
 //   Console.log('hello')
 // }
 
-const NUM = 20
+// const NUM = 20
 
-export function add(a: i32): i32 {
-  return a + NUM;
-}
+// export function add(a: i32): i32 {
+//   return a + NUM;
+// }
+
+// export function sss(str: string): void {
+//     Console.log(str);
+// }

@@ -1,10 +1,24 @@
 const fs = require("fs");
 const loader = require("@assemblyscript/loader");
+
 const imports = {
   /* imports go here */
 };
 const wasmModule = loader.instantiateSync(
-  fs.readFileSync(__dirname + "/hello-as.wasm"),
+  fs.readFileSync(__dirname + "/hello-as-release.wasm"),
   imports
 );
 module.exports = wasmModule.exports;
+
+const { concat } = module.exports
+const { __newString, __getString } = module.exports
+
+function doConcat(aStr, bStr) {
+  let aPtr = __newString(aStr)
+  let bPtr = __newString(bStr)
+  let cPtr = concat(aPtr, bPtr)
+  let cStr = __getString(cPtr)
+  return cStr
+}
+
+console.log(doConcat("Hello ", "world!"))

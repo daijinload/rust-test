@@ -22,9 +22,9 @@ const R = new ArrayBuffer(64);
 const rPtr = changetype<usize>(R);
 
 export function ddd(): u8 {
-  store8(mPtr, 1, 5)
+  store8(mPtr, 0, 5)
   Console.log(mPtr.toString())
-  memory.fill(mPtr, 0, 2)
+  memory.fill(mPtr, 0, 1)
   return load8(mPtr, 1)
   // return load8(rPtr, 1)
 }

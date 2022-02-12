@@ -3108,7 +3108,7 @@
   global.get $assembly/index/mPtr
   local.tee $0
   i32.const 5
-  i32.store8 offset=1
+  i32.store8
   local.get $0
   call $~lib/util/number/utoa32
   local.set $0
@@ -3119,7 +3119,7 @@
   local.get $0
   call $~lib/as-wasi/as-wasi/Descriptor#writeString
   global.get $assembly/index/mPtr
-  i32.const 2
+  i32.const 1
   call $~lib/memory/memory.fill
   global.get $assembly/index/mPtr
   i32.load8_u offset=1

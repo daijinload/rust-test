@@ -15,7 +15,9 @@ void main() {
   final data = File('../as-wasm/hello-as-release.wasm').readAsBytesSync();
   final mod = WasmModule(data);
   print(mod.describe());
-  final inst = mod.builder().build();
-  final ccc = inst.lookupFunction('ccc');
-  print(ccc());
+  final builder = mod.builder();
+  builder.enableWasi(captureStdout: true, captureStderr:true);
+  final inst = builder.build();
+  final ddd = inst.lookupFunction('ddd');
+  print(ddd(1, 2));
 }

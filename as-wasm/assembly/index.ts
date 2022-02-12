@@ -2,19 +2,23 @@
 import { Console, Descriptor, FileSystem } from "as-wasi";
 
 export function ddd(src: i32, inNum: i32, outNum: i32): void {
-  if (src === 1) {
-    const str = Console.readAll() || ''
-    if (str !== null) {
-      Console.log("zzz" + str);
-    }
-    return
-  }
-  if (src === 2) {
-    const str = _fread(inNum)
-    _fwrite(outNum, "zzz" + str)
-    return
-  }
-  throw new Error(`src Required, std=1, file=2 src=${src}`);
+  switch(src) { 
+    case 1: { 
+      const str = Console.readAll() || ''
+      if (str !== null) {
+        Console.log("zzz" + str);
+      }
+      break; 
+    } 
+    case 2: { 
+      const str = _fread(inNum)
+      _fwrite(outNum, "zzz" + str)
+       break; 
+    } 
+    default: { 
+      throw new Error(`src required, std=1, file=2 src=${src}`);
+    } 
+ } 
 }
 
 function _fread(inNum: i32): string {

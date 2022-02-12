@@ -87,7 +87,7 @@
  (data (i32.const 4172) "L")
  (data (i32.const 4184) "\01\00\00\000\00\00\00C\00o\00u\00l\00d\00 \00n\00o\00t\00 \00r\00e\00a\00d\00 \00t\00h\00e\00 \00f\00i\00l\00e\00 ")
  (data (i32.const 4252) "\\")
- (data (i32.const 4264) "\01\00\00\00@\00\00\00s\00r\00c\00 \00R\00e\00q\00u\00i\00r\00e\00d\00,\00 \00s\00t\00d\00=\001\00,\00 \00f\00i\00l\00e\00=\002\00 \00s\00r\00c\00=")
+ (data (i32.const 4264) "\01\00\00\00@\00\00\00s\00r\00c\00 \00r\00e\00q\00u\00i\00r\00e\00d\00,\00 \00s\00t\00d\00=\001\00,\00 \00f\00i\00l\00e\00=\002\00 \00s\00r\00c\00=")
  (data (i32.const 4352) "\05\00\00\00 \00\00\00\00\00\00\00 ")
  (data (i32.const 4380) "B\00\00\00\00\00\00\00\02\t")
  (export "ddd" (func $assembly/index/ddd))
@@ -3767,7 +3767,6 @@
  )
  (func $assembly/index/ddd (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
-  (local $4 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -3784,209 +3783,222 @@
    local.get $3
    i32.const 0
    i32.store offset=8
-   local.get $0
-   i32.const 1
-   i32.eq
-   if
-    global.get $~lib/memory/__stack_pointer
-    local.tee $3
-    i32.const 0
-    call $~lib/as-wasi/as-wasi/Descriptor#readString
-    local.tee $4
-    i32.store
-    local.get $3
-    local.get $4
-    i32.const 1088
-    local.get $4
-    select
-    local.tee $3
-    i32.store
-    local.get $3
-    if
+   block $break|0
+    block $case2|0
+     block $case1|0
+      local.get $0
+      i32.const 1
+      i32.ne
+      if
+       local.get $0
+       i32.const 2
+       i32.eq
+       br_if $case1|0
+       br $case2|0
+      end
+      global.get $~lib/memory/__stack_pointer
+      local.tee $0
+      i32.const 0
+      call $~lib/as-wasi/as-wasi/Descriptor#readString
+      local.tee $1
+      i32.store
+      local.get $0
+      local.get $1
+      i32.const 1088
+      local.get $1
+      select
+      local.tee $0
+      i32.store
+      local.get $0
+      if
+       global.get $~lib/memory/__stack_pointer
+       i32.const 3776
+       i32.store offset=8
+       i32.const 3776
+       local.get $0
+       call $~lib/string/String#concat
+       local.set $0
+       global.get $~lib/memory/__stack_pointer
+       local.get $0
+       i32.store offset=4
+       i32.const 1
+       local.get $0
+       call $~lib/as-wasi/as-wasi/Descriptor#writeString
+      end
+      br $break|0
+     end
+     global.get $~lib/memory/__stack_pointer
+     local.tee $0
+     i32.const 16
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 4396
+     i32.lt_s
+     br_if $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     local.tee $3
+     i64.const 0
+     i64.store
+     local.get $3
+     i64.const 0
+     i64.store offset=8
+     local.get $1
+     call $~lib/number/I32#toString
+     local.set $1
+     global.get $~lib/memory/__stack_pointer
+     local.get $1
+     i32.store
+     global.get $~lib/memory/__stack_pointer
+     i32.const 3808
+     i32.store offset=4
+     local.get $3
+     local.get $1
+     i32.const 3808
+     call $~lib/string/String#concat
+     local.tee $1
+     i32.store offset=8
+     global.get $~lib/memory/__stack_pointer
+     i32.const 3840
+     i32.store offset=4
+     local.get $1
+     i32.const 3840
+     call $~lib/as-wasi/as-wasi/FileSystem.open
+     local.tee $3
+     i32.eqz
+     if
+      global.get $~lib/memory/__stack_pointer
+      i32.const 4048
+      i32.store
+      i32.const 4048
+      local.get $1
+      call $~lib/string/String#concat
+      i32.const 4128
+      i32.const 28
+      i32.const 5
+      call $~lib/as-wasi/as-wasi/wasi_abort
+      unreachable
+     end
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     call $~lib/as-wasi/as-wasi/Descriptor#readString
+     local.tee $3
+     i32.store offset=12
+     local.get $3
+     i32.eqz
+     if
+      global.get $~lib/memory/__stack_pointer
+      i32.const 4192
+      i32.store
+      i32.const 4192
+      local.get $1
+      call $~lib/string/String#concat
+      i32.const 4128
+      i32.const 33
+      i32.const 5
+      call $~lib/as-wasi/as-wasi/wasi_abort
+      unreachable
+     end
+     global.get $~lib/memory/__stack_pointer
+     i32.const 16
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $0
+     local.get $3
+     i32.store
      global.get $~lib/memory/__stack_pointer
      i32.const 3776
      i32.store offset=8
      i32.const 3776
      local.get $3
      call $~lib/string/String#concat
-     local.set $3
+     local.set $0
      global.get $~lib/memory/__stack_pointer
-     local.get $3
-     i32.store offset=4
-     i32.const 1
-     local.get $3
-     call $~lib/as-wasi/as-wasi/Descriptor#writeString
-    end
-   end
-   local.get $0
-   i32.const 2
-   i32.eq
-   if
-    global.get $~lib/memory/__stack_pointer
-    local.tee $3
-    i32.const 16
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4396
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    local.tee $4
-    i64.const 0
-    i64.store
-    local.get $4
-    i64.const 0
-    i64.store offset=8
-    local.get $1
-    call $~lib/number/I32#toString
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    local.get $1
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    i32.const 3808
-    i32.store offset=4
-    local.get $4
-    local.get $1
-    i32.const 3808
-    call $~lib/string/String#concat
-    local.tee $1
-    i32.store offset=8
-    global.get $~lib/memory/__stack_pointer
-    i32.const 3840
-    i32.store offset=4
-    local.get $1
-    i32.const 3840
-    call $~lib/as-wasi/as-wasi/FileSystem.open
-    local.tee $4
-    i32.eqz
-    if
+     local.get $0
+     i32.store offset=8
      global.get $~lib/memory/__stack_pointer
-     i32.const 4048
-     i32.store
-     i32.const 4048
+     i32.const 12
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 4396
+     i32.lt_s
+     br_if $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     local.tee $1
+     i64.const 0
+     i64.store
      local.get $1
-     call $~lib/string/String#concat
-     i32.const 4128
-     i32.const 22
-     i32.const 5
-     call $~lib/as-wasi/as-wasi/wasi_abort
-     unreachable
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.get $4
-    call $~lib/as-wasi/as-wasi/Descriptor#readString
-    local.tee $4
-    i32.store offset=12
-    local.get $4
-    i32.eqz
-    if
-     global.get $~lib/memory/__stack_pointer
-     i32.const 4192
-     i32.store
-     i32.const 4192
-     local.get $1
-     call $~lib/string/String#concat
-     i32.const 4128
-     i32.const 27
-     i32.const 5
-     call $~lib/as-wasi/as-wasi/wasi_abort
-     unreachable
-    end
-    global.get $~lib/memory/__stack_pointer
-    i32.const 16
-    i32.add
-    global.set $~lib/memory/__stack_pointer
-    local.get $3
-    local.get $4
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    i32.const 3776
-    i32.store offset=8
-    i32.const 3776
-    local.get $4
-    call $~lib/string/String#concat
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    local.get $1
-    i32.store offset=8
-    global.get $~lib/memory/__stack_pointer
-    i32.const 12
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4396
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    local.tee $3
-    i64.const 0
-    i64.store
-    local.get $3
-    i32.const 0
-    i32.store offset=8
-    local.get $2
-    call $~lib/number/I32#toString
-    local.set $2
-    global.get $~lib/memory/__stack_pointer
-    local.get $2
-    i32.store
-    global.get $~lib/memory/__stack_pointer
-    i32.const 3808
-    i32.store offset=4
-    local.get $3
-    local.get $2
-    i32.const 3808
-    call $~lib/string/String#concat
-    local.tee $2
-    i32.store offset=8
-    global.get $~lib/memory/__stack_pointer
-    i32.const 3968
-    i32.store offset=4
-    local.get $2
-    i32.const 3968
-    call $~lib/as-wasi/as-wasi/FileSystem.open
-    local.tee $3
-    i32.eqz
-    if
-     global.get $~lib/memory/__stack_pointer
-     i32.const 4048
-     i32.store
-     i32.const 4048
+     i32.const 0
+     i32.store offset=8
      local.get $2
+     call $~lib/number/I32#toString
+     local.set $2
+     global.get $~lib/memory/__stack_pointer
+     local.get $2
+     i32.store
+     global.get $~lib/memory/__stack_pointer
+     i32.const 3808
+     i32.store offset=4
+     local.get $1
+     local.get $2
+     i32.const 3808
      call $~lib/string/String#concat
-     i32.const 4128
-     i32.const 35
-     i32.const 5
-     call $~lib/as-wasi/as-wasi/wasi_abort
-     unreachable
+     local.tee $1
+     i32.store offset=8
+     global.get $~lib/memory/__stack_pointer
+     i32.const 3968
+     i32.store offset=4
+     local.get $1
+     i32.const 3968
+     call $~lib/as-wasi/as-wasi/FileSystem.open
+     local.tee $2
+     i32.eqz
+     if
+      global.get $~lib/memory/__stack_pointer
+      i32.const 4048
+      i32.store
+      i32.const 4048
+      local.get $1
+      call $~lib/string/String#concat
+      i32.const 4128
+      i32.const 41
+      i32.const 5
+      call $~lib/as-wasi/as-wasi/wasi_abort
+      unreachable
+     end
+     local.get $2
+     local.get $0
+     call $~lib/as-wasi/as-wasi/Descriptor#writeStringLn
+     global.get $~lib/memory/__stack_pointer
+     i32.const 12
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     br $break|0
     end
-    local.get $3
-    local.get $1
-    call $~lib/as-wasi/as-wasi/Descriptor#writeStringLn
     global.get $~lib/memory/__stack_pointer
-    i32.const 12
-    i32.add
-    global.set $~lib/memory/__stack_pointer
+    i32.const 4272
+    i32.store offset=4
+    local.get $0
+    call $~lib/number/I32#toString
+    local.set $0
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.store offset=8
+    i32.const 4272
+    local.get $0
+    call $~lib/string/String#concat
+    i32.const 4128
+    i32.const 19
+    i32.const 7
+    call $~lib/as-wasi/as-wasi/wasi_abort
+    unreachable
    end
    global.get $~lib/memory/__stack_pointer
-   i32.const 4272
-   i32.store offset=4
-   local.get $0
-   call $~lib/number/I32#toString
-   local.set $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store offset=8
-   i32.const 4272
-   local.get $0
-   call $~lib/string/String#concat
-   i32.const 4128
-   i32.const 15
-   i32.const 3
-   call $~lib/as-wasi/as-wasi/wasi_abort
-   unreachable
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
   end
   i32.const 20800
   i32.const 20848

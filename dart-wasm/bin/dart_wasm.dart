@@ -24,8 +24,8 @@ void main() {
 
   // ここで inputの配列の先頭に文字列 b を書き込む
   final inStrPtr = inst.lookupFunction('getInStrPtr')();
-  inst.memory.view[inStrPtr] = 97;
-  inst.memory.view[inStrPtr+1] = 98;
+  inst.memory.view[inStrPtr] = Uint8List.fromList([97])[0];
+  inst.memory.view[inStrPtr+1] = Uint8List.fromList([98])[0];
   inst.memory.view[inStrPtr+2] = 99;
   
   final ddd = inst.lookupFunction('ddd');
@@ -34,6 +34,6 @@ void main() {
   final codePoints = inst.memory.view.getRange(ptr, ptr + 12);
   for (var codePoint in codePoints) {
     print(codePoint);
-    print(String.fromCharCode(codePoint));
+    //print(String.fromCharCode(codePoint));
   }
 }

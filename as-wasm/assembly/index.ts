@@ -51,9 +51,10 @@ export function getInStrPtr(): usize {
 
 export function ddd(): usize {
   // a string code point write
-  const str = fromCString(inStrPtr)
-  Console.log(str)
-  writeCString(str)
+  // const str = fromCString(inStrPtr)
+  // Console.log(str)
+  memory.copy(outStrPtr, inStrPtr, 64)
+  // writeCString(str)
   // store8(outStrPtr, 0, <u8>str.charCodeAt(0))
   return outStrPtr
 }

@@ -23,5 +23,8 @@ void main() {
   final ddd = inst.lookupFunction('ddd');
   final ptr = ddd();
   print(ptr);
-  print(inst.memory.view.getRange(ptr, ptr + 1));
+  final codePoints = inst.memory.view.getRange(ptr, ptr + 1);
+  for (var codePoint in codePoints) {
+    print(String.fromCharCode(codePoint));
+  }
 }

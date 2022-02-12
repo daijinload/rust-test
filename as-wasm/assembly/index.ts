@@ -31,12 +31,12 @@ export function getInStrPtr(): usize {
   return inStrPtr
 }
 
-export function ddd(ptr: usize): usize {
+export function ddd(): usize {
   // a string code point write
   store8(inStrPtr, 0, 97)
   const str = fromCString(inStrPtr)
   Console.log(str)
-  return outStrPtr
+  return inStrPtr
 }
 
 

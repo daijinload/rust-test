@@ -1,11 +1,11 @@
 (module
+ (type $none_=>_i32 (func (result i32)))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $none_=>_none (func))
  (type $i32_i32_=>_none (func (param i32 i32)))
  (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
- (type $none_=>_i32 (func (result i32)))
- (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_=>_none (func (param i32)))
+ (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32) (result i32)))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (import "wasi_snapshot_preview1" "fd_write" (func $~lib/bindings/wasi_snapshot_preview1/fd_write (param i32 i32 i32 i32) (result i32)))
@@ -24,7 +24,6 @@
  (global $assembly/index/IN_STR (mut i32) (i32.const 0))
  (global $assembly/index/inStrPtr (mut i32) (i32.const 0))
  (global $assembly/index/OUT_STR (mut i32) (i32.const 0))
- (global $assembly/index/outStrPtr (mut i32) (i32.const 0))
  (global $~lib/memory/__stack_pointer (mut i32) (i32.const 20060))
  (memory $0 1)
  (data (i32.const 1036) "\1c")
@@ -3172,8 +3171,6 @@
   global.set $assembly/index/inStrPtr
   call $~lib/arraybuffer/ArrayBuffer#constructor
   global.set $assembly/index/OUT_STR
-  global.get $assembly/index/OUT_STR
-  global.set $assembly/index/outStrPtr
  )
  (func $~lib/as-wasi/as-wasi/wasi_abort (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32)
   (local $4 i32)
@@ -3563,7 +3560,8 @@
   global.set $~lib/memory/__stack_pointer
   local.get $0
  )
- (func $assembly/index/ddd (param $0 i32) (result i32)
+ (func $assembly/index/ddd (result i32)
+  (local $0 i32)
   (local $1 i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -3582,18 +3580,16 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $2
+  local.tee $1
   i32.const 0
   i32.store
   global.get $assembly/index/inStrPtr
-  local.tee $1
+  local.tee $2
   i32.const 97
   i32.store8
-  i32.const 0
-  local.set $0
   loop $while-continue|0
    local.get $0
-   local.get $1
+   local.get $2
    i32.add
    i32.load8_u
    if
@@ -3604,8 +3600,8 @@
     br $while-continue|0
    end
   end
-  local.get $2
   local.get $1
+  local.get $2
   local.get $0
   call $~lib/string/String.UTF8.decodeUnsafe
   local.tee $0
@@ -3617,7 +3613,7 @@
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  global.get $assembly/index/outStrPtr
+  global.get $assembly/index/inStrPtr
  )
  (func $byn-split-outlined-A$~lib/rt/itcms/__visit (param $0 i32)
   (local $1 i32)

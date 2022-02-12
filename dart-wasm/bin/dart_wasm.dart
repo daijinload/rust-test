@@ -14,13 +14,14 @@ import 'package:wasm/wasm.dart';
 void main() {
   final data = File('../as-wasm/hello-as-release.wasm').readAsBytesSync();
   final mod = WasmModule(data);
-  print(mod.describe());
+  mod.createMemory(1);
+  // print(mod.describe());
   final builder = mod.builder()..enableWasi(captureStdout: true, captureStderr: true);
   // builder.enableWasi(captureStdout: false, captureStderr:false);
   // builder.enableWasi(captureStdout: true, captureStderr: true);
   final inst = builder.build();
   final ddd = inst.lookupFunction('ddd');
-  print(ddd(1, 1, 2));
-  print(inst.stdout.toString());
-  
+  final ptr = ddd();
+  print(ptr);
+  print(inst.memory.view.getRange(ptr, ptr + 1));
 }

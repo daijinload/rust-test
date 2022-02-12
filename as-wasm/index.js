@@ -10,11 +10,11 @@ const wasmModule = loader.instantiateSync(
 );
 module.exports = wasmModule.exports;
 
-const { aaa } = module.exports
-const num = aaa()
-console.log(num)
-console.log(wasmModule.exports.memory.buffer[num])
-console.log(wasmModule.exports.memory.buffer.slice[num])
+const { ddd } = module.exports
+const num = aaa(2, 1, 2)
+// console.log(num)
+// console.log(wasmModule.exports.memory.buffer[num])
+// console.log(wasmModule.exports.memory.buffer.slice[num])
 
 // console.log(wasmModule.exports.memory.buffer)
 

@@ -4,10 +4,11 @@ import { Console, Descriptor, FileSystem } from "as-wasi";
 export function ddd(src: i32, inNum: i32, outNum: i32): void {
   switch(src) { 
     case 1: { 
-      const str = Console.readAll() || ''
-      if (str !== null) {
-        Console.log("zzz" + str);
-      }
+      // const str = Console.readAll() || ''
+      // if (str !== null) {
+      //   Console.log("zzz" + str);
+      // }
+      Console.log("zzz");
       break; 
     } 
     case 2: { 

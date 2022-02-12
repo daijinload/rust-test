@@ -16,8 +16,11 @@ void main() {
   final mod = WasmModule(data);
   print(mod.describe());
   final builder = mod.builder();
-  builder.enableWasi(captureStdout: true, captureStderr:true);
+  // builder.enableWasi(captureStdout: false, captureStderr:false);
+  builder.enableWasi(captureStdout: true, captureStderr: true);
   final inst = builder.build();
   final ddd = inst.lookupFunction('ddd');
-  print(ddd(1, 2));
+  print(ddd(1, 1, 2));
+  print(inst.stdout.toString());
+  
 }

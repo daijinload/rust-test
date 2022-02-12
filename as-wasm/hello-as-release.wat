@@ -3586,7 +3586,9 @@
   i32.const 0
   i32.store
   global.get $assembly/index/inStrPtr
-  local.set $1
+  local.tee $1
+  i32.const 97
+  i32.store8
   i32.const 0
   local.set $0
   loop $while-continue|0

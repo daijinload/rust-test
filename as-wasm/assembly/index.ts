@@ -5,6 +5,14 @@ import { Console, Descriptor, FileSystem } from "as-wasi";
 // import { getStoreBytes } from "assemblyscript";
 // export { heap };
 
+function store8(ptr: usize, offset: usize, u: u8): void {
+  store<u8>(ptr + offset, u);
+}
+
+function load8(ptr: usize, offset: usize): u8 {
+  return load<u8>(ptr + offset);
+}
+
 function fromCString(cstring: usize): string {
   let size = 0;
   while (load<u8>(cstring + size) !== 0) {
@@ -24,20 +32,13 @@ export function getInStrPtr(): usize {
 }
 
 export function ddd(ptr: usize): usize {
+  // a string code point write
+  store8(inStrPtr, 0, 97)
   const str = fromCString(inStrPtr)
   Console.log(str)
   return outStrPtr
 }
 
-// @inline
-// function store8(ptr: usize, offset: usize, u: u8): void {
-//   store<u8>(ptr + offset, u);
-// }
-
-// @inline
-// function load8(ptr: usize, offset: usize): u8 {
-//   return load<u8>(ptr + offset);
-// }
 
 
 // export function ddd(): u8 {

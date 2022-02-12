@@ -24,6 +24,7 @@ void main() {
   final ptr = ddd();
   print(ptr);
   final codePoints = inst.memory.view.getRange(ptr, ptr + 1);
+    print(String.fromCharCode(0));
   for (var codePoint in codePoints) {
     print(String.fromCharCode(codePoint));
   }

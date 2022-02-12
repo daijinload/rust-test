@@ -26,7 +26,11 @@ function fromCString(cstring: usize): string {
 
 function writeCString(cstring: string): void {
   const ptr = changetype<usize>(cstring);
-  memory.copy(outStrPtr, ptr, String.UTF8.byteLength(cstring))
+  // let size = 0;
+  // while (load<u8>(ptr + size) !== 0) {
+  //   size++;
+  // }
+  memory.copy(outStrPtr, ptr, 64)
 
   // let size = 0;
   // for (const codePoint of cstring) {

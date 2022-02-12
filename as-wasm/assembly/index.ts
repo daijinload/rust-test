@@ -8,6 +8,9 @@ import { Console, Descriptor, FileSystem } from "as-wasi";
 function store8(ptr: usize, offset: usize, u: u8): void {
   store<u8>(ptr + offset, u);
 }
+function store32(ptr: usize, offset: usize, u: u32): void {
+  store<u32>(ptr + (offset << alignof<u32>()), u);
+}
 
 function load8(ptr: usize, offset: usize): u8 {
   return load<u8>(ptr + offset);
@@ -21,6 +24,17 @@ function fromCString(cstring: usize): string {
   return String.UTF8.decodeUnsafe(cstring, size);
 }
 
+function writeCString(cstring: string): void {
+  const ptr = changetype<usize>(cstring);
+  memory.copy(outStrPtr, ptr, String.UTF8.byteLength(cstring))
+
+  // let size = 0;
+  // for (const codePoint of cstring) {
+  //   store32(outStrPtr, size++, codePoint)
+  // }
+}
+
+
 const IN_STR = new ArrayBuffer(64);
 const inStrPtr = changetype<usize>(IN_STR);
 
@@ -33,10 +47,11 @@ export function getInStrPtr(): usize {
 
 export function ddd(): usize {
   // a string code point write
-  store8(inStrPtr, 0, 97)
   const str = fromCString(inStrPtr)
   Console.log(str)
-  return inStrPtr
+  writeCString(str)
+  // store8(outStrPtr, 0, <u8>str.charCodeAt(0))
+  return outStrPtr
 }
 
 

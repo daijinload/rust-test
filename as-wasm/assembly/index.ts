@@ -5,29 +5,95 @@ import { Console, Descriptor, FileSystem } from "as-wasi";
 // import { getStoreBytes } from "assemblyscript";
 // export { heap };
 
-@inline
-function store8(ptr: usize, offset: usize, u: u8): void {
-  store<u8>(ptr + offset, u);
+function fromCString(cstring: usize): string {
+  let size = 0;
+  while (load<u8>(cstring + size) !== 0) {
+    size++;
+  }
+  return String.UTF8.decodeUnsafe(cstring, size);
 }
 
-@inline
-function load8(ptr: usize, offset: usize): u8 {
-  return load<u8>(ptr + offset);
+const IN_STR = new ArrayBuffer(64);
+const inStrPtr = changetype<usize>(IN_STR);
+
+const OUT_STR = new ArrayBuffer(64);
+const outStrPtr = changetype<usize>(OUT_STR);
+
+export function getInStrPtr(): usize {
+  return inStrPtr
 }
 
-const M = new ArrayBuffer(64);
-const mPtr = changetype<usize>(M);
-
-const R = new ArrayBuffer(64);
-const rPtr = changetype<usize>(R);
-
-export function ddd(): u8 {
-  store8(mPtr, 0, 5)
-  // Console.log(mPtr.toString())
-  // memory.fill(mPtr, 0, 1)
-  return load8(mPtr, 0)
-  // return load8(rPtr, 1)
+export function ddd(ptr: usize): usize {
+  const str = fromCString(inStrPtr)
+  Console.log(str)
+  return outStrPtr
 }
+
+// @inline
+// function store8(ptr: usize, offset: usize, u: u8): void {
+//   store<u8>(ptr + offset, u);
+// }
+
+// @inline
+// function load8(ptr: usize, offset: usize): u8 {
+//   return load<u8>(ptr + offset);
+// }
+
+
+// export function ddd(): u8 {
+//   store8(mPtr, 0, 5)
+//   // Console.log(mPtr.toString())
+//   // memory.fill(mPtr, 0, 1)
+//   return load8(mPtr, 0)
+//   // return load8(rPtr, 1)
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @inline
+// function store8(ptr: usize, offset: usize, u: u8): void {
+//   store<u8>(ptr + offset, u);
+// }
+
+// @inline
+// function load8(ptr: usize, offset: usize): u8 {
+//   return load<u8>(ptr + offset);
+// }
+
+// const M = new ArrayBuffer(64);
+// const mPtr = changetype<usize>(M);
+
+// const R = new ArrayBuffer(64);
+// const rPtr = changetype<usize>(R);
+
+// export function ddd(): u8 {
+//   store8(mPtr, 0, 5)
+//   // Console.log(mPtr.toString())
+//   // memory.fill(mPtr, 0, 1)
+//   return load8(mPtr, 0)
+//   // return load8(rPtr, 1)
+// }
 
 
 // const arr = ["aa", "bb"]

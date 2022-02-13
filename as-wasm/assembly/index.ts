@@ -59,6 +59,10 @@ export function ddd(): usize {
   return outStrPtr
 }
 
+export function eee(str: string): usize {
+  Console.log(str)
+  return changetype<usize>(str);
+}
 
 
 // export function ddd(): u8 {

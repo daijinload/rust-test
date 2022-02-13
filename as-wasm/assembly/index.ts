@@ -3,6 +3,7 @@ import { Console, Descriptor, FileSystem } from "as-wasi";
 import { 
   JSON
  } from "assemblyscript-json";
+// import { Buffer } from "assemblyscript-json/assembly/util";
 
 // import { getStoreBytes } from "assemblyscript";
 // export { heap };
@@ -25,6 +26,17 @@ function fromCString(cstring: usize): string {
   }
   return String.UTF8.decodeUnsafe(cstring, size);
 }
+
+function byteLength(str: string): u32 {
+  // return Uint8Array.wrap(String.UTF8.encode(str)).byteLength
+  return String.UTF8.encode(str).byteLength
+  // let size = 0;
+  // while (load8(strPtr, size) !== 0) {
+  //   size++;
+  // }
+  // return size;
+}
+
 
 function writeCString(cstring: string): void {
   const ptr = changetype<usize>(cstring);
@@ -56,23 +68,52 @@ export function ddd(): usize {
   // 受け取ったjsonのパースをする。非常にめんどい感じ。。。
   const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
   Console.log(str)
+
+  let rtnStr: string = '{}'
   const bbb = <JSON.Obj>JSON.parse(str)
   if (bbb !== null) {
     const name = bbb.getString('name')
     if (name !== null) {
       Console.log(name.toString())
+      rtnStr = `{name:${name.toString()}${name.toString()}}`
     }
   }
   
-  memory.copy(outStrPtr, inStrPtr, 64)
-  // writeCString(str)
-  // store8(outStrPtr, 0, <u8>str.charCodeAt(0))
+  Console.log(rtnStr)
+  Console.log(`${byteLength(rtnStr)}`)
+  const rtnStrPtr = changetype<usize>(rtnStr);
+  // memory.copy(outStrPtr, rtnStrPtr, byteLength(rtnStr) -1)
+  // シンボル分の可能性が高いが、文字列は（文字列長 - 2）の設定となる。
+  // memory.copy(outStrPtr, rtnStrPtr, byteLength(rtnStr)-2)
+  // // memory.copy(outStrPtr, inStrPtr, 64)
+  // // writeCString(str)
+  // // store8(outStrPtr, 0, <u8>str.charCodeAt(0))
+  // Console.log(String.UTF8.decodeUnsafe(outStrPtr, 64, true))
+
+  const list = Uint8Array.wrap(String.UTF8.encode(rtnStr))
+  for (let i = 0; i < list.byteLength; i++) {
+    Console.log(`${list[i]}`)
+    store8(outStrPtr, i, list[i])
+  }
+  
+
+  // const size = byteLength(rtnStr)
+  // for (let i:u32 = 0; i < size; i++) {
+  //   const v = load8(rtnStrPtr, i);
+  //   Console.log(`${v}`)
+  //   store8(outStrPtr, i, v)
+  // }
+
   return outStrPtr
 }
 
 export function eee(str: string): usize {
   //Console.log(str)
   return changetype<usize>(str);
+}
+export function eee2(): usize {
+  //Console.log(str)
+  return byteLength('{name:🌠🌠}');
 }
 
 // export function fff(): [u8, u8] {

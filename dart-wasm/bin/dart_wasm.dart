@@ -17,10 +17,10 @@ void main() {
   final data = File('../as-wasm/hello-as-release.wasm').readAsBytesSync();
   final mod = WasmModule(data);
   mod.createMemory(1);
-  // print(mod.describe());
-  final builder = mod.builder()..enableWasi(captureStdout: true, captureStderr: true);
-  // builder.enableWasi(captureStdout: false, captureStderr:false);
-  // builder.enableWasi(captureStdout: true, captureStderr: true);
+  print(mod.describe());
+
+  // キャプチャはwasm内で標準出力に出すものが出なくなる。デバッグ時は出したい。本番はエラーだけ出す？
+  final builder = mod.builder()..enableWasi(captureStdout: false, captureStderr: false);
   final inst = builder.build();
 
   // ignore: todo Global変数をexport出来れば、わざわざ関数を使う必要はないので後で書き換える。
@@ -43,8 +43,6 @@ void main() {
   final codePoints = inst.memory.view.getRange(ptr, ptr + 8);
   for (var codePoint in codePoints) {
     print(codePoint);
-    //print(String.fromCharCode(codePoint));
   }
   print(utf8.decode(codePoints.toList()));
-
 }

@@ -1,6 +1,5 @@
 // The entry file of your WebAssembly module.
 import { Console, Descriptor, FileSystem } from "as-wasi";
-// import {  } from "assemblyscript";
 
 // import { getStoreBytes } from "assemblyscript";
 // export { heap };
@@ -53,6 +52,9 @@ export function ddd(): usize {
   // a string code point write
   // const str = fromCString(inStrPtr)
   // Console.log(str)
+  const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
+  Console.log(str)
+  // String.UTF8.encode(inStrPtr)
   memory.copy(outStrPtr, inStrPtr, 64)
   // writeCString(str)
   // store8(outStrPtr, 0, <u8>str.charCodeAt(0))
@@ -214,6 +216,7 @@ export function eee(str: string): usize {
 
 // import { JSON } from "assemblyscript-json"; 
 // // import { JSONEncoder } from "assemblyscript-json";
+// expimport { JSON } from "assemblyscript-json";
 // export function aaa(): JSON.Obj {
 //   let jsonObj: JSON.Obj = <JSON.Obj>(JSON.parse('{"hello": "world", "value": 24}'));
 //   // let enc = new JSONEncoder();

@@ -1,5 +1,8 @@
 // The entry file of your WebAssembly module.
 import { Console, Descriptor, FileSystem } from "as-wasi";
+import { 
+  JSON
+ } from "assemblyscript-json";
 
 // import { getStoreBytes } from "assemblyscript";
 // export { heap };
@@ -54,6 +57,11 @@ export function ddd(): usize {
   // Console.log(str)
   const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
   Console.log(str)
+  const bbb = <JSON.Obj>JSON.parse(str)
+  if (bbb !== null) {
+    Console.log(bbb.toString())
+  }
+  
   // String.UTF8.encode(inStrPtr)
   memory.copy(outStrPtr, inStrPtr, 64)
   // writeCString(str)
@@ -217,7 +225,9 @@ export function eee(str: string): usize {
 // import { JSON } from "assemblyscript-json"; 
 // // import { JSONEncoder } from "assemblyscript-json";
 // expimport { JSON } from "assemblyscript-json";
-// export function aaa(): JSON.Obj {
+// expimport { JSONEncoder } from "assemblyscript-json";
+// export fuimport { JSONEncoder } from "assemblyscript-json";
+// function aaa(): JSON.Obj {
 //   let jsonObj: JSON.Obj = <JSON.Obj>(JSON.parse('{"hello": "world", "value": 24}'));
 //   // let enc = new JSONEncoder();
 //   // enc.setInteger('aaa', 111)

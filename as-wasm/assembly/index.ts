@@ -92,7 +92,7 @@ export function ddd(): usize {
 
   const list = Uint8Array.wrap(String.UTF8.encode(rtnStr))
   for (let i = 0; i < list.byteLength; i++) {
-    Console.log(`${list[i]}`)
+    // Console.log(`${list[i]}`)
     store8(outStrPtr, i, list[i])
   }
   

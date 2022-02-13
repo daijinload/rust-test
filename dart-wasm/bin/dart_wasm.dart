@@ -23,22 +23,20 @@ void main() {
   // builder.enableWasi(captureStdout: true, captureStderr: true);
   final inst = builder.build();
 
-  // ここで inputの配列の先頭に文字列 b を書き込む
+  // ignore: todo Global変数をexport出来れば、わざわざ関数を使う必要はないので後で書き換える。
+  // 動的に割り当てる方法がわからないため、判明している関数を使う方法で配列のpointerを取得する。
   final inStrPtr = inst.lookupFunction('getInStrPtr')();
 
-  print('🍣🍺');
-
+  // 文字列を渡す必要があるが、Dartの文字列の扱いは割とrawな感じ。
   var abcStart = inStrPtr;
   final abcs = utf8.encode('🍣🍺');
   for (var codePoint in abcs) {
-    print(codePoint);
     inst.memory.view[abcStart++] = codePoint;
   }
-  // inst.memory.view[inStrPtr+1] = Uint8List.fromList([98])[0];
-  // inst.memory.view[inStrPtr+2] = 99;
 
-  // inst.memory.grow(deltaPages)
-  
+  // 関数を取得して実行する。
+  // 現状では受け取った文字列pointerを返却用の配列に書き出して、そのpointerを返す感じ。
+  // 要するに、渡した文字列をコピーして返すだけ。
   final ddd = inst.lookupFunction('ddd');
   final ptr = ddd();
   print(ptr);
@@ -47,30 +45,6 @@ void main() {
     print(codePoint);
     //print(String.fromCharCode(codePoint));
   }
-  print(codePoints.toList());
   print(utf8.decode(codePoints.toList()));
-  // print(StringBuffer(codePoints).toString());
-  // print(String.fromCharCodes(Uint8List.fromList([60, 99, 60, 122])));
-  // print(String.fromCharCodes(Uint8List.fromList([99, 60, 122, 60])));
 
-  // Bytes to UTF-16 string
-  Uint8List bytes = Uint8List.fromList('桜花'.codeUnits);
-  print(utf8.encode('桜花'));
-  print(utf8.encode('🍣🍺'));
-  print(utf8.decode('桜花'.runes.toList()));
-  
-  StringBuffer buffer = StringBuffer();
-  for (int i = 0; i < bytes.length;) {
-    int firstWord = (bytes[i] << 8) + bytes[i + 1];
-    if (0xD800 <= firstWord && firstWord <= 0xDBFF) {
-      int secondWord = (bytes[i + 2] << 8) + bytes[i + 3];
-      buffer.writeCharCode(((firstWord - 0xD800) << 10) + (secondWord - 0xDC00) + 0x10000);
-      i += 4;
-    }
-    else {
-    	buffer.writeCharCode(firstWord);
-      i += 2;
-    }
-  }
-  print(buffer.toString());  
 }

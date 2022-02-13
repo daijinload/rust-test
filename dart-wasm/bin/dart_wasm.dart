@@ -20,6 +20,7 @@ void main() {
   print(mod.describe());
 
   // キャプチャはwasm内で標準出力に出すものが出なくなる。デバッグ時は出したい。本番はエラーだけ出す？
+  // final builder = mod.builder();
   final builder = mod.builder()..enableWasi(captureStdout: false, captureStderr: false);
   final inst = builder.build();
 

@@ -60,9 +60,13 @@ export function ddd(): usize {
 }
 
 export function eee(str: string): usize {
-  Console.log(str)
+  //Console.log(str)
   return changetype<usize>(str);
 }
+
+// export function fff(): [u8, u8] {
+//   return [1, 2]
+// }
 
 
 // export function ddd(): u8 {

@@ -18,16 +18,16 @@ const num = aaa(2, 1, 2)
 
 // console.log(wasmModule.exports.memory.buffer)
 
-// const { concat } = module.exports
-// const { __newString, __getString } = module.exports
+const { concat } = module.exports
+const { __newString, __getString } = module.exports
 
-// function doConcat(aStr, bStr) {
-//   let aPtr = __newString(aStr)
-//   let bPtr = __newString(bStr)
-//   let cPtr = concat(aPtr, bPtr)
-//   console.log(wasmModule.exports.memory.buffer)
-//   let cStr = __getString(cPtr)
-//   return cStr
-// }
+function doConcat(aStr, bStr) {
+  let aPtr = __newString(aStr)
+  let bPtr = __newString(bStr)
+  let cPtr = concat(aPtr, bPtr)
+  console.log(wasmModule.exports.memory.buffer)
+  let cStr = __getString(cPtr)
+  return cStr
+}
 
-// console.log(doConcat("Hello ", "world!"))
+console.log(doConcat("Hello ", "world!"))

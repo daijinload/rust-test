@@ -52,9 +52,8 @@ export function getInStrPtr(): usize {
 }
 
 export function ddd(): usize {
-  // a string code point write
-  // const str = fromCString(inStrPtr)
-  // Console.log(str)
+
+  // 受け取ったjsonのパースをする。非常にめんどい感じ。。。
   const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
   Console.log(str)
   const bbb = <JSON.Obj>JSON.parse(str)
@@ -65,7 +64,6 @@ export function ddd(): usize {
     }
   }
   
-  // String.UTF8.encode(inStrPtr)
   memory.copy(outStrPtr, inStrPtr, 64)
   // writeCString(str)
   // store8(outStrPtr, 0, <u8>str.charCodeAt(0))

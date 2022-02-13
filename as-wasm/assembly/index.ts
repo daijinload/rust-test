@@ -57,11 +57,13 @@ export function ddd(): usize {
   // Console.log(str)
   const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
   Console.log(str)
-  // const bbb = <JSON.Obj>JSON.parse(str)
-  // const name = bbb && bbb.get('name').toString()
-  // if (bbb !== null) {
-  //   Console.log(bbb.get('name').toString())
-  // }
+  const bbb = <JSON.Obj>JSON.parse(str)
+  if (bbb !== null) {
+    const name = bbb.getString('name')
+    if (name !== null) {
+      Console.log(name.toString())
+    }
+  }
   
   // String.UTF8.encode(inStrPtr)
   memory.copy(outStrPtr, inStrPtr, 64)

@@ -24,9 +24,8 @@ void main() {
   final builder = mod.builder()..enableWasi(captureStdout: false, captureStderr: false);
   final inst = builder.build();
 
-  // ignore: todo Global変数をexport出来れば、わざわざ関数を使う必要はないので後で書き換える。
-  // 動的に割り当てる方法がわからないため、判明している関数を使う方法で配列のpointerを取得する。
-  final inStrPtr = inst.lookupFunction('getInStrPtr')();
+  // 動的に割り当てる方法がわからないため、関数input用の事前定義した配列のpointerを取得する。
+  final inStrPtr = inst.lookupGlobal('inStrPtr')?.value;
 
   // 文字列を渡す必要があるが、Dartの文字列の扱いは割とrawな感じ。
   var abcStart = inStrPtr;

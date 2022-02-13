@@ -63,6 +63,7 @@
  (data (i32.const 3580) "<")
  (data (i32.const 3592) "\01\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s")
  (data (i32.const 3648) "\03\00\00\00 \00\00\00\00\00\00\00 ")
+ (export "inStrPtr" (global $assembly/index/inStrPtr))
  (export "getInStrPtr" (func $assembly/index/getInStrPtr))
  (export "ddd" (func $assembly/index/ddd))
  (export "memory" (memory $0))

@@ -42,7 +42,7 @@ function writeCString(cstring: string): void {
 
 
 const IN_STR = new ArrayBuffer(64);
-const inStrPtr = changetype<usize>(IN_STR);
+export const inStrPtr = changetype<usize>(IN_STR);
 
 const OUT_STR = new ArrayBuffer(64);
 const outStrPtr = changetype<usize>(OUT_STR);
@@ -57,10 +57,11 @@ export function ddd(): usize {
   // Console.log(str)
   const str = String.UTF8.decodeUnsafe(inStrPtr, 64, true)
   Console.log(str)
-  const bbb = <JSON.Obj>JSON.parse(str)
-  if (bbb !== null) {
-    Console.log(bbb.toString())
-  }
+  // const bbb = <JSON.Obj>JSON.parse(str)
+  // const name = bbb && bbb.get('name').toString()
+  // if (bbb !== null) {
+  //   Console.log(bbb.get('name').toString())
+  // }
   
   // String.UTF8.encode(inStrPtr)
   memory.copy(outStrPtr, inStrPtr, 64)

@@ -95,8 +95,8 @@ export function ddd(): usize {
     // Console.log(`${list[i]}`)
     store8(outStrPtr, i, list[i])
   }
-  
 
+ 
   // const size = byteLength(rtnStr)
   // for (let i:u32 = 0; i < size; i++) {
   //   const v = load8(rtnStrPtr, i);

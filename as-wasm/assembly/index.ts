@@ -18,7 +18,7 @@ function load8(ptr: usize, offset: usize): u8 {
 
 function fromCString(cstring: usize): string {
   let size = 0;
-  while (load<u8>(cstring + size) !== 0) {
+  while (load8(cstring, size) !== 0) {
     size++;
   }
   return String.UTF8.decodeUnsafe(cstring, size);

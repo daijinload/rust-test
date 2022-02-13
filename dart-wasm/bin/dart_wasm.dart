@@ -29,7 +29,7 @@ void main() {
 
   // 文字列を渡す必要があるが、Dartの文字列の扱いは割とrawな感じ。
   var abcStart = inStrPtr;
-  final abcs = utf8.encode('🍣🍺');
+  final abcs = utf8.encode('{"name":"🌠"}');
   for (var codePoint in abcs) {
     inst.memory.view[abcStart++] = codePoint;
   }
@@ -40,9 +40,9 @@ void main() {
   final ddd = inst.lookupFunction('ddd');
   final ptr = ddd();
   print(ptr);
-  final codePoints = inst.memory.view.getRange(ptr, ptr + 8);
-  for (var codePoint in codePoints) {
-    print(codePoint);
-  }
+  final codePoints = inst.memory.view.getRange(ptr, ptr + 64);
   print(utf8.decode(codePoints.toList()));
+  // for (var codePoint in codePoints) {
+  //   print(codePoint);
+  // }
 }
